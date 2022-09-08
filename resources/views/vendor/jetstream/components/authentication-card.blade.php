@@ -2,7 +2,7 @@
     <div>
         {{ $logo }}
     </div>
-    <div class="font-extrabold tracking-widest text-md text-primary md:text-3xl"><span class="uppercase">SKSU<span class="capitalize"> electronic archiving, retrieval <span class="lowercase">and</span> content handling</span></span></div>
+    <div class="font-extrabold tracking-widest text-md text-primary md:text-3xl sm:justify-center"><span class="uppercase">SKSU<span class="capitalize"> electronic archiving, retrieval <span class="lowercase">and</span> content handling</span></span></div>
     <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-green-500 shadow-md sm:max-w-md sm:rounded-lg">
         {{ $slot }}
     </div>
