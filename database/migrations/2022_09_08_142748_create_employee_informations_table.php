@@ -20,10 +20,13 @@ return new class extends Migration
             $table->string("full_name");
             $table->date("birthday")->nullable();
             $table->bigInteger("contact_number")->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('avatar')->nullable();
             $table->foreignId("user_id");
-            $table->foreignId("office_id");
+            $table->foreignId("role_id"); 
+            $table->foreignId("office_id")->nullable();
             $table->foreignId("position_id");
-            $table->foreignId("bond_id");
+            $table->foreignId("bond_id")->nullable();
             $table->timestamps();
         });
     }

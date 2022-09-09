@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Campus extends Model
 {
     use HasFactory;
+
+    public function office(){
+        return $this->hasOne('App\Models\Office');
+    }
 }

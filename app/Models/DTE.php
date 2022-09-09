@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DTE extends Model
 {
     use HasFactory;
+
+    public function travel_order(){
+        return $this->belongsTo('App\Models\Travel_Order');
+    }
 }

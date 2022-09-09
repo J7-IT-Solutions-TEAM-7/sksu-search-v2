@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->text("address")->nullable();
+            $table->text("campus_code")->nullable();
             $table->string("telephone")->nullable();
             $table->string("email")->nullable();
+            $table->integer("admin_user_id")->nullable();
             $table->timestamps();
         });
     }

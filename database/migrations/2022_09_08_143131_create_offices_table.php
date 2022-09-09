@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('offices', function (Blueprint $table) {
             $table->id();
             $table->string("office_name");
+            $table->string("office_code");
             $table->foreignId("campus_id");
-            $table->foreignId("head_id");
+            $table->foreignId("head_id")->nullable();
+            $table->foreignId("admin_user_id")->nullable();
             $table->integer("OIC_id_1")->nullable();
             $table->integer("OIC_id_2")->nullable();
             $table->integer("OIC_id_3")->nullable();

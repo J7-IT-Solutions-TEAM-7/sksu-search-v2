@@ -31,7 +31,7 @@
                     <span class="ml-2 text-sm ">{{ __('Remember me') }}</span>
                 </label>
                      @if (Route::has('password.request'))
-                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="text-sm text-primary-100 underline hover:text-primary-200" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                     @endif
