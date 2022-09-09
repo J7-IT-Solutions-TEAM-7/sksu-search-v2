@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('auth/google', 'App\Http\Controllers\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'App\Http\Controllers\GoogleController@handleGoogleCallback');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,3 +29,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::view('/401-page', 'errs.401-page')->name('401-error');   
+
+Route::middleware(['auth:sanctum', 'verified'])->get('redirects', 'App\Http\Controllers\HomeController@index')->name('redirect');
