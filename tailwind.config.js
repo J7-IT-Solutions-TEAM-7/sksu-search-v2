@@ -90,5 +90,4 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-    presets: [require("./vendor/filament/filament/tailwind.config.js")],
 };
