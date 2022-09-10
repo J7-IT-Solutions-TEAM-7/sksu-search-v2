@@ -17,7 +17,7 @@ Route::get('auth/google', 'App\Http\Controllers\GoogleController@redirectToGoogl
 Route::get('auth/google/callback', 'App\Http\Controllers\GoogleController@handleGoogleCallback');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware([
@@ -29,6 +29,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
 
 Route::view('/401-page', 'errs.401-page')->name('401-error');   
 
