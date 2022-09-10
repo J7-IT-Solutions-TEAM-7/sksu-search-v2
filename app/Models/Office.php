@@ -14,7 +14,7 @@ class Office extends Model
     }
 
     public function campus(){
-        return $this->belongsTo('App\Models\Campus');
+        return $this->hasOne('App\Models\Campus', 'id', 'campus_id');
     }
 
     public function head(){

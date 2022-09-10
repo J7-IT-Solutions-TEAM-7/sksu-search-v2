@@ -12,4 +12,8 @@ class Role extends Model
     public function role_pivot(){
         return $this->HasOne('App\Models\Role_Pivot');
     }
+
+    public function employee_information(){
+        return $this->hasOne('App\Models\Employee_information');
+    }
 }

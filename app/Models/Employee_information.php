@@ -16,6 +16,7 @@ class Employee_information extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
+
     public function office(){
         return $this->belongsTo('App\Models\Office');
     }
@@ -44,6 +45,14 @@ class Employee_information extends Model
 
     public function role_pivot(){
         return $this->HasOne('App\Models\Role_Pivot');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function campus(){
+        return $this->belongsTo('App\Models\Campus');
     }
 
     public function travel_order_cash_advance(){

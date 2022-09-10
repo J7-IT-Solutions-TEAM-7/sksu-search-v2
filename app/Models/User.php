@@ -61,4 +61,8 @@ class User extends Authenticatable
     public function employee_information(){
         return $this->hasOne('App\Models\Employee_information');
     }
+
+    public function campus(){
+        return $this->hasOne('App\Models\Campus');
+    }
 }
