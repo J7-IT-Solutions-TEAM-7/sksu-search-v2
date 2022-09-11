@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'activated' => 'boolean',
+    ];
+
+    protected $fillable = [
+        'activated',
+    ];
 }
