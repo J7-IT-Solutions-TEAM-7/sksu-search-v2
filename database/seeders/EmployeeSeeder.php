@@ -6062,6 +6062,21 @@ class EmployeeSeeder extends Seeder
            'role_id'=>7,
            'office_id'=>3,
            'position_id'=>24]);
+
+      DB::table('users')->insert([
+            'email'=>'sksuadmin@admin.com',
+            'password'=> Hash::make('superadmin123'),
+      ]);
+   
+        
+      DB::table('employee_informations')->insert([
+            'full_name'=> 'Administrator',
+            'first_name' => '',
+            'last_name' => '',
+            'user_id' => 402,
+            'role_id'=>1,
+            'office_id'=>'',
+            'position_id'=>'']);
     }
 
 }

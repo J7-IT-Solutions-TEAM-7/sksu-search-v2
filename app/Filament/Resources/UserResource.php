@@ -21,16 +21,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Fieldset;
 
 class UserResource extends Resource
 {
     protected static ?string $model = Employee_information::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
     protected static ?string $navigationLabel = 'Information';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 4;
 
     // protected static ?string $navigationColor = 'green';
 
@@ -39,20 +40,32 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+        
             ->schema([
-                TextInput::make('full_name')->required(),
-                Select::make('role_id')
-                ->label('Role')
-                ->options(Role::all()->pluck('role_desc', 'id'))
-                ->searchable()->required(),
-                Select::make('office_id')
-                ->label('Office')
-                ->options(Office::all()->pluck('office_name', 'id'))
-                ->searchable()->required(),
-                Select::make('position_id')
-                ->label('Position')
-                ->options(Position::all()->pluck('position_desc', 'id'))
-                ->searchable()->required(),
+                Fieldset::make('Name')
+                ->schema([
+                    TextInput::make('first_name')->required(),
+                    TextInput::make('last_name')->required(),
+                    TextInput::make('full_name')->required(),
+                    TextInput::make('address'),
+                 ])->columns(2),
+                 Fieldset::make('Assignment')
+                ->schema([
+                    Select::make('role_id')
+                    ->label('Role')
+                    ->options(Role::all()->pluck('role_desc', 'id'))
+                    ->searchable()->required(),
+                    Select::make('office_id')
+                    ->label('Office')
+                    ->options(Office::all()->pluck('office_name', 'id'))
+                    ->searchable()->required(),
+                    Select::make('position_id')
+                    ->label('Position')
+                    ->options(Position::all()->pluck('position_desc', 'id'))
+                    ->searchable()->required(),
+                 ])->columns(2)
+                
+               
             ]);
     }
 
