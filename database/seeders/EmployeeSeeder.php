@@ -6071,12 +6071,9 @@ class EmployeeSeeder extends Seeder
         
       DB::table('employee_informations')->insert([
             'full_name'=> 'Administrator',
-            'first_name' => '',
-            'last_name' => '',
             'user_id' => 402,
             'role_id'=>1,
-            'office_id'=>'',
-            'position_id'=>'']);
+            ]);
     }
 
 }

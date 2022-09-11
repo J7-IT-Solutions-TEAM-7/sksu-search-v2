@@ -19,13 +19,15 @@ use Filament\Forms\Components\Select;
 use App\Models\Employee_information;
 use Filament\Forms\Components\Grid;
 
-class OfficeResource extends Resource
+class OfficeResource extends Resource 
 {
     protected static ?string $model = Office::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationGroup = 'Assignments';
 
     public static function form(Form $form): Form
     {

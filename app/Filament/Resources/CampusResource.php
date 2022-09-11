@@ -24,7 +24,9 @@ class CampusResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-library';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 5;
+
+    protected static ?string $navigationGroup = 'Assignments';
 
     public static function form(Form $form): Form
     {

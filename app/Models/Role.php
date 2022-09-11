@@ -9,6 +9,11 @@ class Role extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'role_code',
+        'role_desc',
+    ];
+
     public function role_pivot(){
         return $this->HasOne('App\Models\Role_Pivot');
     }

@@ -26,7 +26,7 @@ class UserAccountResource extends Resource
 
     protected static ?string $navigationLabel = 'Accounts';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 7;
 
     protected static ?string $navigationGroup = 'Employees';
 

@@ -9,6 +9,11 @@ class Position extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'position_code',
+        'position_desc',
+    ];
+
     public function employee_information(){
         return $this->hasOne('App\Models\Employee_information');
     }
