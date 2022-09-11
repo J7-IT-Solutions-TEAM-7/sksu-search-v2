@@ -13,6 +13,13 @@ class Employee_information extends Model
 
     use HasFactory;
 
+    protected $fillable = [
+        'full_name',
+        'role_id',
+        'office_id',
+        'position_id',
+    ];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }

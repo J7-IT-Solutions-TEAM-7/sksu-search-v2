@@ -9,6 +9,16 @@ class Campus extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'campus_code',
+        'address',
+        'telephone',
+        'email',
+        'admin_user_id',
+    ];
+
+
     public function office(){
         return $this->belongsTo('App\Models\Office');
     }

@@ -9,6 +9,13 @@ class Office extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'office_name',
+        'office_code',
+        'campus_id',
+        'head_id',
+    ];
+
     public function employee_information(){
         return $this->hasOne('App\Models\Employee_information');
     }

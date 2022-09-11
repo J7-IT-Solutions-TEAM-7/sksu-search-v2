@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -28,6 +29,10 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                 danger: colors.rose,
+                 primary: colors.blue,
+                 success: colors.green,
+                 warning: colors.yellow,
                 "primary-bg": "#0c6600",
                 "primary-bg-alt": "#cee0cc",
                 "secondary-bg": "#cee0cc",
