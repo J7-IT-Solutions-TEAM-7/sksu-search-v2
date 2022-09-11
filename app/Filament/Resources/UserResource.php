@@ -22,6 +22,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Fieldset;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 
 class UserResource extends Resource
 {
@@ -89,7 +92,14 @@ class UserResource extends Resource
 
             ])
             ->filters([
-                //
+                SelectFilter::make('Office')
+                ->relationship('office', 'office_name'),
+                TernaryFilter::make('Has Account')
+                ->nullable()
+                ->column('user_id')
+                // SelectFilter::make('Campus')
+                // ->relationship('campus', 'name')
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
