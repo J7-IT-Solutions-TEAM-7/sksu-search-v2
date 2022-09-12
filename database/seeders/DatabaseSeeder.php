@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([RoleSeeder::class, CampusSeeder::class, OfficeSeeder::class, PositionSeeder::class, EmployeeSeeder::class,EmployeeNamesToUsers::class,PermissionSeeder::class,]);
+        $this->call([RoleSeeder::class, CampusSeeder::class, OfficeSeeder::class, PositionSeeder::class, EmployeeSeeder::class,EmployeeNamesToUsers::class,PermissionSeeder::class,PhilippineRegionsTableSeeder::class,PhilippineProvincesTableSeeder::class,PhilippineCitiesTableSeeder::class,PhilippineBarangaysTableSeeder::class,]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
