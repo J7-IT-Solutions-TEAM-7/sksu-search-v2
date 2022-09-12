@@ -4,6 +4,6 @@
         </h2>
     </x-slot>
 <div>
-    Success is as dangerous as failure.
+  
 </div>
 

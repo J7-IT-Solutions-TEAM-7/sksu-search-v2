@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
-
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
     mode: "jit",
     purge: [
@@ -15,21 +15,18 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
     ],
-
     theme: {
-        scale: {
-            '105': '-1'
-        },
         extend: {
-            spacing:{
-                'screen-80': '80vh',
-            },
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
             colors: {
-                 danger: colors.rose,
+                 spacing:{
+                'screen-80': '80vh',
+                },
+                fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                },
+                danger: colors.rose,
                  primary: colors.blue,
                  success: colors.green,
                  warning: colors.yellow,
@@ -68,31 +65,32 @@ module.exports = {
                         900: "#13160b"
                 },
                 'secondary': {
-                        100: "#f8ecdf",
-                        200: "#f1d9bf",
-                        300: "#ebc79e",
-                        400: "#e4b47e",
-                        500: "#dda15e",
-                        600: "#b1814b",
-                        700: "#856138",
-                        800: "#584026",
-                        900: "#2c2013"
+                    100: "#f8ecdf",
+                    200: "#f1d9bf",
+                    300: "#ebc79e",
+                    400: "#e4b47e",
+                    500: "#dda15e",
+                    600: "#b1814b",
+                    700: "#856138",
+                    800: "#584026",
+                    900: "#2c2013"
                 },
                 'secondary-alt': {
-                        100: "#ffe7d9",
-                        200: "#ffcfb3",
-                        300: "#ffb88c",
-                        400: "#ffa066",
-                        500: "#ff8840",
-                        600: "#cc6d33",
-                        700: "#995226",
-                        800: "#66361a",
-                        900: "#331b0d"
-                },
-
+                    100: "#ffe7d9",
+                    200: "#ffcfb3",
+                    300: "#ffb88c",
+                    400: "#ffa066",
+                    500: "#ff8840",
+                    600: "#cc6d33",
+                    700: "#995226",
+                    800: "#66361a",
+                    900: "#331b0d"
+            },
             },
         },
     },
-
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-};
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
+}
