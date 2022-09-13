@@ -35,6 +35,12 @@ Route::middleware([
     // Travel Order
     Route::get('/create-travel-order', TravelOrder::class)
     ->name('travel-order');
+
+    //Cash Advances
+    Route::get('/cash-advance/activity', function (){
+        return view('activity-cash-advances');
+    })
+    ->name('ca-activity');
 });
 
 

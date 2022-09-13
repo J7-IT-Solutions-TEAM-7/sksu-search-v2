@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('activity__cash__advances', function (Blueprint $table) {
             $table->id();
             $table->boolean("isLiquidated");
-            $table->string("amount");
+            $table->integer("amount");
+            $table->string("title");
             $table->date("date_from");
             $table->date("date_to");
             $table->date("cheque_release");
