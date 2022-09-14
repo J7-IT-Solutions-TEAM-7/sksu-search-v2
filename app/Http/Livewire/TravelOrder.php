@@ -2,7 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\City;
+use App\Models\DTE;
 use App\Models\Employee_information;
+use App\Models\Province;
+use App\Models\Region;
 use App\Models\Travel_Order_Signatory;
 use Livewire\Component;
 
@@ -21,16 +25,28 @@ class TravelOrder extends Component
     public $searchedSigs = false;
     public $signatory_ids = [];
     public $showSignatoryError = false;
+    public $purpose;
     
     public $has_registration;
 
+    //variables for official time (from and to dates)
+    public $dateoftravelfrom;
+    public $dateoftravelto;
+
+     //variables for place
+     public $region;
+     public $region_codes;
+     public $province;
+     public $province_codes;
+     public $city;
+     public $city_codes;
 
     public function render()
     {
         $searchUsrRes = [];
         if ($this->searchUsers != "") {
             $this->searchedUsers = true;
-            $searchUsrRes = Employee_information::search('full_name', $this->searchUsers)->get();
+            $searchUsrRes = Employee_information::search('full_name', $this->searchUsers)->whereNotIn('full_name', ['Administrator'])->get();
         } else {
             $searchUsrRes = [];
             $this->searchedUsers = false;
@@ -43,7 +59,11 @@ class TravelOrder extends Component
             $searchSigsRes = [];
             $this->searchedSigs = false;
         }
-        $this->userInfos = Employee_information::whereIn('id', $this->applicant_ids)->get();
+        $this->userInfos = Employee_information::whereIn('id', $this->applicant_ids)->whereNotIn('full_name', ['Administrator'])->get();
+        $this->region = Region::get();
+        $this->province = Province::where("region_code", "=",  $this->region_codes)->get();
+        $this->city = City::where("province_code", "=", $this->province_codes)->get();
+        $this->per_diem = DTE::where('region_code', '=', $this->region_codes)->first();
         $sigsInfos ="";
         if(isset($this->travel_order)){
            // $sigsInfos = Travel_Order_Signatory::whereIn('user_id', $this->signatory_ids)->where('travel_order_id',$this->travel_order->id)->orderBy('stepNumber')->with('user')->get();
@@ -55,7 +75,8 @@ class TravelOrder extends Component
             'users' => $searchUsrRes, 'sigs' => $searchSigsRes,
             'userInfos' => $this->userInfos,
             'sigsInfos' => $sigsInfos
-        ])->layout('layouts.app');
+        ])->with('regions', $this->region)->with('provinces',  $this->province)
+        ->with('cities',  $this->city)->with('diems', $this->per_diem)->layout('layouts.app');
     }
 
     public function setUser($uID)
