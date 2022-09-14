@@ -7,15 +7,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <title>{{ config('app.name') }}</title>
 
         <style>[x-cloak] { display: none !important; }</style>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
-   
+        @livewireScripts
         @stack('scripts')
     </head>
 
@@ -34,13 +31,7 @@
             <!-- Page Content -->
            <main>
                 {{ $slot }}
-            </main>
-        </div>
-
-
          
-        @stack('modals')
-        @livewireScripts    
         @livewire('notifications')
     </body>
 </html>
