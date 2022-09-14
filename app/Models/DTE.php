@@ -9,6 +9,8 @@ class DTE extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['amount','region', 'region_code'];
+
     public function travel_order(){
         return $this->belongsTo('App\Models\Travel_Order');
     }
