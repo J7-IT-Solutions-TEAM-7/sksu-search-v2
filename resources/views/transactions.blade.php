@@ -122,7 +122,7 @@
             <li class="py-4 overflow-hidden group hover:cursor-pointer rounded-md bg-white px-6 shadow"
                 x-data="{ open: false }">
                 <span class="text-left mb-2 group-hover:cursor-pointer block" x-on:click="open = !open">Others</span>
-                <ul role="list" class="rounded-xl bg-primary-300 py-2 text-white items-center" x-cloak
+                <ul role="list" class="h-32 overflow-y-auto rounded-xl bg-primary-300 py-2 text-white items-center" x-cloak
                     x-show="open">
                     <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
                         <span
@@ -141,6 +141,56 @@
                     <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
                         <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payment
                             to Contractors of Infrastructure Projects</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">
+                       Individual Compensation for PS (Overload/Overtime/Honorarium/Requested Subject/Others)
+                        </span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payroll Compensation for PS (Overload/Overtime/Honorarium/Requested Subject/Others)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Compensation for Salary/Wage (Permanent/Temporary/Casual)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Regular Payroll for Salaries/Wages (Permanent/Temporary/Casual)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Compensation for Part-Time Services</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payroll Compensation for Part-Time Services</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Salary/Wage (COS/JO/Laborer)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Regular Payroll for Salaries/Wages (COS/JO/Laborer)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Pay/Honorarium for External Experts/Professionals (Activity/Project/Program-Based)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payroll Pay/Honorarium for External Experts/Professionals (Activity/Project/Program-Based)</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Compensation for Special Allowances and Bonuses</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payroll Compensation for Special Allowances and Bonuses</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Individual Compensation for Laborers, Student Assistants, Etc.</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Payroll Compensation for Laborers, Student Assistants, Etc.</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Remittance of Payroll Deductions</span>
+                    </li>
+                    <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3  capitalize">
+                        <span class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Remittance of Taxes Withheld</span>
                     </li>
             </li>
         </ul>
