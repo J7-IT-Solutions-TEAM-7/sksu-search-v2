@@ -111,7 +111,7 @@
 
 
                             </div>
-                            <span class="col-span-2 mt-2 text-red-700 uppercase error" x-cloak
+                            <span class="col-span-2 mt-2 text-sm text-red-700 uppercase error" x-cloak
                                 x-show="showApplicantError==true">atleast 1(one) applicant is needed</span>
                         </div>
 
@@ -202,13 +202,14 @@
 
 
                             </div>
-                            <span class="col-span-2 mt-2 text-red-700 uppercase error" x-cloak
-                                x-show="showSignatoryError==true">atleast 1(one) signatory is needed</span>
+    
                         </div>
-                        <p class="my-auto ml-2 text-sm text-gray-500"><span
+                        <p class="my-auto mt-1 text-sm text-gray-500"><span
                                     class="font-extrabold text-indigo-400">PLEASE NOTE:</span>
                                 Signatories will be displayed in your travel order <strong>in the order of your
                                     input.</strong></p>
+                                     <span class="col-span-2 mt-2 text-sm text-red-700 uppercase error" x-cloak
+                                x-show="showSignatoryError==true">atleast 1(one) signatory is needed</span>
                     </div>
                 </div>
                 <div class="pt-1 border-gray-200">
@@ -234,19 +235,22 @@
                 <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600">
                 <label for="dateoftravelfrom" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-gray-100 -top-2 left-2">From</label>
                 <input type="date" name="dateoftravelfrom" id="from_date" wire:model="dateoftravelfrom"
-                                wire:change="changeDate" name="dateoftravelfrom"
+                                name="dateoftravelfrom"
                                 min="{{ date_format(date_add(date_create(date("Y-m-d")),date_interval_create_from_date_string("0 days")),"Y-m-d") }}"
                 class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
+                @error('dateoftravelfrom') <span class="text-red-700 error">{{ $message }}</span> @enderror
+
                 </div>
                 _
                 <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600">
                 <label for="to_date" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">To</label>
                 <input type="date" id="to_date" wire:model="dateoftravelto" name="dateoftravelto"
-                                wire:change="changeDate" min="{{ $dateoftravelfrom }}"
+                                min="{{ $dateoftravelfrom }}"
                 class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
+                 @error('dateoftravelto') <span class="text-red-700 error">{{ $message }}</span> @enderror
                 </div>
                 </div>
-                    @error('date') <span class="text-red-700 error">{{ $message }}</span> @enderror
+                   
                 </div>
             </div>
 
@@ -256,6 +260,7 @@
             </label>
             <div class="mt-1">
             <div class="grid grid-cols-2 gap-4">
+            <div>
             <select wire:model="region_codes" id="country" name="country" autocomplete="country"
                         class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
                         <option selected>--SELECT REGION--</option>
@@ -265,6 +270,8 @@
 
             </select>
             @error('region_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
+            </div>
+            <div>
             <select wire:model="province_codes"
                         class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
                         <option selected>--SELECT PROVINCE--</option>
@@ -276,6 +283,8 @@
                     </select>
                     @error('province_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span>
                     @enderror
+                    </div>
+                    <div>
             <select wire:model="city_codes"
                         class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
                         <option selected>--SELECT CITY/MUNICIPALITY--</option>
@@ -285,12 +294,13 @@
                         @endforeach
                     </select>
                     @error('city_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
+                    </div>
+                    <div>
             <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500">
             <label for="others" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">Others</label>
             <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
-
             </div>
-            
+            </div>
             </div>
         </div>
     </div>
@@ -341,14 +351,15 @@
                         grand total</h3>
                     @endif  
           </div >       
-                        <button type="submit" class="float-right px-3 py-1 mx-2 mb-4 text-white border border-white rounded-lg bg-primary-500">
-                        Submit
-                        </button>
-                        <button class="float-right px-3 py-1 mx-2 mb-4 bg-white border rounded-lg text-primary-500 border-primary-500">
-                        Cancel
-                        </button>
+                       
           </div >
         @endif
+         <button type="submit" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
+                        Submit
+                        </button>
+                        <button class="float-right px-3 py-1 mx-2 my-4 bg-white border rounded-lg text-primary-500 border-primary-500">
+                        Cancel
+                        </button>
     </div>
     </div>
          </div>
@@ -358,71 +369,5 @@
        </form>
     </div>
     
- 
-
-          
-
-    {{-- <div class="grid grid-cols-2 gap-3">
-    <div>
-    <div class="mt-5">
-        <label for="purpose" class="block text-sm font-medium text-gray-700">Purpose</label>
-        <div class="mt-1">
-            <textarea id="purpose" rows="4" class="block p-2.5 w-full text-sm text-gray-700 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500"></textarea>        
-        </div>
-    </div>
-    </div>
-
-    <div>
-    <div class="mt-5">
-        <label for="users" class="block text-sm font-medium text-gray-700">Date of Travel</label>
-        <div class="mt-1">
-            <div class="flex gap-4">
-            <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600">
-            <label for="from_date" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-gray-100 -top-2 left-2">From</label>
-            <input type="date" name="from_date" id="from_date" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm" placeholder="Jane Smith">
-            </div>
-            _
-            <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600">
-            <label for="to_date" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">To</label>
-            <input type="date" name="to_date" id="to_date" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm" placeholder="Jane Smith">
-            </div>
-            </div>
-        </div>
-    </div>
-    <div class="mt-5">
-        <label for="purpose" class="block text-sm font-medium text-gray-700">Place to visit</label>
-        <div class="mt-1">
-            <div class="grid grid-cols-2 gap-4">
-            <select wire:model="region_codes" id="country" name="country" autocomplete="country"
-             class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-             <option selected>--SELECT REGION--</option>
-            </select>
-            <select wire:model="region_codes" id="country" name="country" autocomplete="country"
-             class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-             <option selected>--SELECT REGION--</option>
-            </select>
-            <select wire:model="region_codes" id="country" name="country" autocomplete="country"
-             class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-             <option selected>--SELECT REGION--</option>
-            </select>
-            <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500">
-            <label for="others" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">Others</label>
-            <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
-            </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div> --}}
-
-    {{-- <div class="m-4">
-    <button type="submit" class="float-right px-3 py-1 mx-2 text-white border border-white rounded-lg bg-primary-500">
-        Submit
-    </button>
-    <button class="float-right px-3 py-1 mx-2 bg-white border rounded-lg text-primary-500 border-primary-500">
-        Cancel
-    </button>
-    </div> --}}
-
 </div>
 
