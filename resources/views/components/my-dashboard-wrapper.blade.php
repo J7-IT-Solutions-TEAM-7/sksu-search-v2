@@ -114,12 +114,10 @@
 			<div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
 
 				<nav class="flex-1 px-2 mt-5 space-y-1">
-					<!-- Current: "bg-indigo-800 text-white", Default: "text-white hover:bg-indigo-600 hover:bg-opacity-75" -->
-					<a href="#"
-						class="flex items-center px-2 py-2 text-sm font-medium text-white rounded-md bg-primary-500 group">
-						
-						Dashboard
-					</a>
+					
+                    <x-sidenav-link href="{{ route('mydashboard') }}" :active="request()->routeIs('mydashboard')">
+                        My Dashboard
+                    </x-sidenav-link>
 					<div class="space-y-1" x-data="{ open: false }">
 						<!-- Current: "bg-primary-100 text-primary-900", Default: "bg-white text-primary-600 hover:bg-primary-50 hover:text-primary-900" -->
 						<button x-on:click="open=!open" type="button"
@@ -169,9 +167,6 @@
 		</div>
 		<main class="flex-1">
 			<div class="py-6">
-				<div class="max-w-full px-4 mx-auto sm:px-6 md:px-8">
-					<h1 class="text-2xl font-semibold text-primary-900">Dashboard</h1>
-				</div>
 				<div class="max-w-full px-4 mx-auto sm:px-6 md:px-8">
 					{{ $slot }}
 				</div>
