@@ -58,7 +58,7 @@
         </div>
 
         @if (isset($travel_order))
-        {{-- @if ($isDraft == true) --}}
+        @if ($travel_order->isDraft == true)
         <div class="w-full">
             <div class="m-6 divide-y divide-black divide-solid print:divide-y-2">
                 <div class="flex items-start w-full h-auto p-6 print:block ">
@@ -208,7 +208,7 @@
                                 to:</span>
                             <div class="col-span-1 text-sm font-semibold tracking-wide text-black uppercase">
                                 @foreach ($applicants as $applicant)
-                                <span class="block">{{ $applicant->full_name }}</span>
+                                <span class="block">{{ $applicant->employee_information->full_name }}</span>
                                 @endforeach
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                             </span>
 
                             @php
-                            $sigpositions = App\Models\Office::orWhere('admin_user_id','=',$signatory->user_id)->orWhere('head_user_id','=',$signatory->user_id)->get();
+                            $sigpositions = App\Models\Office::orWhere('admin_user_id','=',$signatory->user_id)->orWhere('head_id','=',$signatory->user_id)->get();
                             $campuses = App\Models\Campus::orWhere('admin_user_id','=',$signatory->user_id)->get();
                             $campusCount= count($campuses);
                             $posCount= count($sigpositions);
@@ -301,7 +301,7 @@
 
         </div>
         @endif
-         @if ($isDraft == true)
+         @if ($travel_order->isDraft == true)
         <button wire:click="deleteTO('{{ $travel_order->to_type }}')" id="printto"
             class="max-w-sm px-4 py-2 font-semibold tracking-wider text-white bg-red-500 rounded-full w-sm hover:bg-red-200 hover:text-primary-500 active:bg-primary-500 active:text-white">Delete
             Travel Order</button>
@@ -326,7 +326,7 @@
             Travel Order</a>
         @endif
         @endif
-        {{-- @else
+        @else
         <div class="w-full">
             <div class="m-6 divide-y divide-black divide-solid print:divide-y-2">
                 <div class="flex py-10 my-auto">
@@ -340,7 +340,7 @@
         <a href="{{route('redirect')}}" id="printto"
             class="max-w-sm px-4 py-2 font-semibold tracking-wider rounded-full w-sm bg-primary-500 text-primary-200 hover:bg-primary-200 hover:text-primary-500 active:bg-primary-700 active:text-white">Go
             to dashboard</a>
-        @endif --}}
+        @endif
 
 </div>
 
