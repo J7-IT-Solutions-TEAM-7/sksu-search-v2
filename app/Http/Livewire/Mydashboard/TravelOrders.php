@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Mydashboard;
 
 use App\Http\Livewire\MyDashboard\TravelOrderPrint;
+use App\Http\Livewire\TravelOrder;
 use App\Models\Travel_Order;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables;
@@ -29,18 +30,13 @@ class TravelOrders extends Component implements HasTable
         ];
     }
 
-    protected function getTableFilters(): array
-    {
-        return [ ];
-    }
-
     protected function getTableActions(): array
     {
         return [  
-        Tables\Actions\ViewAction::make()
-        ->label('View')
-        ->color('success')
-        ->url((route('print-travel-order', ['id' => $this->id]))), 
+        // Tables\Actions\ViewAction::make()
+        // ->label('View')
+        // ->color('success'),
+        //->url(fn (TravelOrder $travel_order): string => route('print-travel-order', ['id' => $travel_order->id])), 
         ];
     }
 
