@@ -46,7 +46,7 @@ class GoogleController extends Controller
                         $finduser->email =$user->email;
                         $finduser->email_verified_at = $user->user['verified_email'] == true ? Carbon::now() : null;
                         $finduser->provider_id = $user->id;
-                        $finduser->provider_id = $user->avatar;
+                        $finduser->avatar = $user->avatar;
                         $finduser->save();
 
                         $find_employee = Employee_information::find($finduser->id);

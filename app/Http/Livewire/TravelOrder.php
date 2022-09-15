@@ -11,6 +11,7 @@ use App\Models\Travel_Order;
 use App\Models\Travel_Order_Applicant;
 use App\Models\Travel_Order_Signatory;
 use Carbon\Carbon;
+use Filament\Notifications\Notification;
 use Livewire\Component;
 
 
@@ -153,7 +154,16 @@ class TravelOrder extends Component
                     ]
                 );
                 $this->toValidated = true;
-                $this->save_official_time();   
+                $this->save_official_time();
+                
+                
+                Notification::make() 
+                ->title('Travel Order Saved successfully')
+                ->iconColor('success') 
+                ->success()
+                ->send(); 
+
+
                 return redirect()->route('trans');
             // if ($this->toType == "offtime") {
             //     $this->save_official_time();

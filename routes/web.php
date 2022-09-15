@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\MyDashboard\TravelOrderPrint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\TravelOrder;
 /*
@@ -38,6 +39,8 @@ Route::middleware([
     // Travel Order
     Route::get('/create-travel-order', TravelOrder::class)
     ->name('travel-order');
+    Route::get('/print-travel-order', TravelOrderPrint::class)
+    ->name('print-travel-order');
 
     //Cash Advances
     Route::get('/cash-advance/activity', function (){
