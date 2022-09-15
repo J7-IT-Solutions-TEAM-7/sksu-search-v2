@@ -33,9 +33,10 @@ class TravelOrders extends Component implements HasTable
     protected function getTableActions(): array
     {
         return [  
-        // Tables\Actions\ViewAction::make()
-        // ->label('View')
-        // ->color('success'),
+        Tables\Actions\ViewAction::make()
+        ->label('View')
+        ->color('success')
+        ->url(fn ($record) => route('print-travel-order', 'id='.$record->id)),
         //->url(fn (TravelOrder $travel_order): string => route('print-travel-order', ['id' => $travel_order->id])), 
         ];
     }

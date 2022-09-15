@@ -13,6 +13,6 @@ class Travel_Order_Applicant extends Model
         return $this->hasOne('App\Models\Travel_Order','id','travel_order_id');
     }
     public function employee_information(){
-        return $this->hasOne('App\Models\Employee_information','id','user_id');
+        return $this->hasOne('App\Models\Employee_information','id','employee_id');
     }
 }

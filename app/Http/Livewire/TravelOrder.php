@@ -164,7 +164,7 @@ class TravelOrder extends Component
                 ->send(); 
 
 
-                return redirect()->route('trans');
+                return redirect()->route('mytravelorders');
             // if ($this->toType == "offtime") {
             //     $this->save_official_time();
             // } else if ($this->toType == "offtravel") {
