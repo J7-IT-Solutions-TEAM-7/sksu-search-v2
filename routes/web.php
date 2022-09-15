@@ -28,6 +28,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/mydashboard', function () {
+        return view('my-dashboard');
+    })->name('mydashboard');
     Route::get('/transactions', function () {
         return view('transactions');
     })->name('trans');
@@ -41,6 +44,13 @@ Route::middleware([
         return view('activity-cash-advances');
     })
     ->name('ca-activity');
+
+    //mydashboard links
+
+    Route::get('/mydashboard/travelorders', function (){
+        return view('pages.my-dashboard.travel-orders');
+    })
+    ->name('mytravelorders');
 });
 
 
