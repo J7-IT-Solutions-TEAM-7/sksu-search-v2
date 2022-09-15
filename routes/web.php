@@ -39,8 +39,8 @@ Route::middleware([
     // Travel Order
     Route::get('/create-travel-order', TravelOrder::class)
     ->name('travel-order');
-    Route::get('/print-travel-order', TravelOrderPrint::class)
-    ->name('print-travel-order');
+    // Route::get('print-travel-order/{id}', TravelOrderPrint::class)
+    // ->name('print-travel-order');
 
     //Cash Advances
     Route::get('/cash-advance/activity', function (){
