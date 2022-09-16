@@ -417,7 +417,13 @@
         @endif
     </div>
 
-    <div class="col-span-1 p-4 text-left" >
+    
+
+
+
+</div>
+
+<div class="col-span-1 p-4 text-left" >
     <span class="text-lg font-semibold tracking-wider text-left uppercase text-primary-700">Approval Status </span>
     <div class="">
         <div class="flow-root mt-6">
@@ -492,12 +498,6 @@
 
     </div>
 </div>
-
-
-
-</div>
-
-
 
 </div>
 

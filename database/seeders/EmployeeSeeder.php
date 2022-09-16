@@ -6048,20 +6048,20 @@ class EmployeeSeeder extends Seeder
         'office_id'=>48,
         'position_id'=>7]);
 
-        DB::table('users')->insert([
-         'email'=>'gicawalo@gmail.com',
-         'password'=> Hash::make('gab123'),
-      ]);
+      //   DB::table('users')->insert([
+      //    'email'=>'gicawalo@gmail.com',
+      //    'password'=> Hash::make('gab123'),
+      // ]);
 
      
-        DB::table('employee_informations')->insert([
-           'full_name'=> 'Gabriel Jon Icawalo',
-           'first_name' => 'Gabriel Jon',
-           'last_name' => 'Icawalo',
-           'user_id' => 401,
-           'role_id'=>7,
-           'office_id'=>3,
-           'position_id'=>24]);
+      //   DB::table('employee_informations')->insert([
+      //      'full_name'=> 'Gabriel Jon Icawalo',
+      //      'first_name' => 'Gabriel Jon',
+      //      'last_name' => 'Icawalo',
+      //      'user_id' => 401,
+      //      'role_id'=>7,
+      //      'office_id'=>3,
+      //      'position_id'=>24]);
 
       DB::table('users')->insert([
             'email'=>'sksuadmin@admin.com',
@@ -6071,7 +6071,7 @@ class EmployeeSeeder extends Seeder
         
       DB::table('employee_informations')->insert([
             'full_name'=> 'Administrator',
-            'user_id' => 402,
+            'user_id' => 401,
             'role_id'=>1,
             ]);
     }
