@@ -15,7 +15,7 @@
          <input id="official_time" name="toType" wire:model="toType" type="radio"
             value="offtravel" class="w-4 h-4 border-gray-300 text-primary-500 focus:ring-primary-500">
           <label for="official_time" class="block ml-1 text-sm font-medium text-gray-700">
-             Official Travel
+             Official Business
           </label>
      </div>
 
@@ -214,7 +214,7 @@
                 </div>
                 <div class="pt-1 border-gray-200">
                     <label for="about" class="block pt-2 mt-px font-medium border-t text-md text-primary-bg">
-                         You are here by directed to: (?)
+                         You are hereby directed to: (?)
                     </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <textarea wire:model="purpose" id="about" name="about" rows="5"
@@ -254,57 +254,59 @@
                 </div>
             </div>
 
-            <div class="mt-5 border-t">
-            <label for="about" class="block pt-2 mt-px font-medium text-md text-primary-bg">
-            Place to visit:
-            </label>
-            <div class="mt-1">
-            <div class="grid grid-cols-2 gap-4">
-            <div>
-            <select wire:model="region_codes" id="country" name="country" autocomplete="country"
-                        class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-                        <option selected>--SELECT REGION--</option>
-                        @foreach ($regions as $region)
-                        <option value="{{$region->region_code}}">{{$region->region_description}}</option>
-                        @endforeach
+            
+     @if ($toType=="offtravel")
+        <div class="mt-5 border-t">
+                <label for="about" class="block pt-2 mt-px font-medium text-md text-primary-bg">
+                Place to visit:
+                </label>
+                <div class="mt-1">
+                <div class="grid grid-cols-2 gap-4">
+                <div>
+                <select wire:model="region_codes" id="country" name="country" autocomplete="country"
+                            class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
+                            <option selected>--SELECT REGION--</option>
+                            @foreach ($regions as $region)
+                            <option value="{{$region->region_code}}">{{$region->region_description}}</option>
+                            @endforeach
 
-            </select>
-            @error('region_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
-            </div>
-            <div>
-            <select wire:model="province_codes"
-                        class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-                        <option selected>--SELECT PROVINCE--</option>
-                        @foreach ($provinces as $province)
-                        <option value="{{$province->province_code}}">{{$province->province_description}}
-                        </option>
-                        @endforeach
+                </select>
+                @error('region_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
+                </div>
+                <div>
+                <select wire:model="province_codes"
+                            class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
+                            <option selected>--SELECT PROVINCE--</option>
+                            @foreach ($provinces as $province)
+                            <option value="{{$province->province_code}}">{{$province->province_description}}
+                            </option>
+                            @endforeach
 
-                    </select>
-                    @error('province_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span>
-                    @enderror
-                    </div>
-                    <div>
-            <select wire:model="city_codes"
-                        class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
-                        <option selected>--SELECT CITY/MUNICIPALITY--</option>
-                        @foreach ($cities as $city)
-                        <option value="{{$city->city_municipality_code}}">
-                            {{$city->city_municipality_description}}</option>
-                        @endforeach
-                    </select>
-                    @error('city_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
-                    </div>
-                    <div>
-            <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500">
-            <label for="others" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">Others</label>
-            <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
-            </div>
-            </div>
+                        </select>
+                        @error('province_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span>
+                        @enderror
+                        </div>
+                        <div>
+                <select wire:model="city_codes"
+                            class="block w-full min-w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-bg focus:border-primary-bg sm:max-w-xs sm:text-sm">
+                            <option selected>--SELECT CITY/MUNICIPALITY--</option>
+                            @foreach ($cities as $city)
+                            <option value="{{$city->city_municipality_code}}">
+                                {{$city->city_municipality_description}}</option>
+                            @endforeach
+                        </select>
+                        @error('city_codes') <span class="mt-3 text-red-700 error">{{ $message }}</span> @enderror
+                        </div>
+                        <div>
+                <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500">
+                <label for="others" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">Others</label>
+                <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
+                </div>
+                </div>
+                </div>
             </div>
         </div>
-    </div>
-     @if ($toType=="offtravel")
+
          <div class="pt-2">   
              <div class="col-span-1 col-start-2 row-span-1 row-start-1 mt-1">
               <div class="relative flex items-start">

@@ -13,6 +13,9 @@ class Travel_Order extends Model
         return $this->belongsTo('App\Models\Itinerary');
     }
 
+    public function applicant(){
+        return $this->belongsTo('App\Models\Travel_Order_Applicant');
+    }
 
     public function side_note(){
         return $this->belongsTo('App\Models\Travel_Order_Sidenote');

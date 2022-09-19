@@ -55,12 +55,12 @@
                     </div>
                 </div>
             </div>
+            @if($travel_order->to_type == 'offtime')
             <div id="contents" class="flex w-full h-auto px-4 pt-2">
                 <div id="header" class="items-start block w-full space-y-3 text-left">
                     <div class="flex-wrap block -space-y-2">
-                        <span class="font-semibold tracking-wide text-left text-black text-md">You are hereby directed
-                            to proceed to <strong>
-                                @if ($travel_order->others!="")
+                                                    <span class="font-semibold tracking-wide text-left text-black text-md">Date of travel: <strong>
+                                {{-- @if ($travel_order->others!="")
                                 {{$travel_order->others}}, {{$travel_order->city->city_municipality_description}},
                                 {{$travel_order->province->province_description}},
                                 {{ $travel_order->region->region_description }}
@@ -68,23 +68,24 @@
                                 {{$travel_order->city->city_municipality_description}},
                                 {{$travel_order->province->province_description}},
                                 {{ $travel_order->region->region_description }}
-                                @endif
-                            </strong> on the
-                            @if ($travel_order->date_of_travel_from == $travel_order->date_of_travel_to) <strong
+                                @endif --}}
+                            </strong>
+                            @if ($travel_order->date_of_travel_from == $travel_order->date_of_travel_to) 
+                            <strong
                                 class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('F Y')}}</strong>
-                            to do the following:
+                           to do the following:
                         </span>
                         @else
                         <strong
                             class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('F Y')}}</strong> to <strong
                             class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_to)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_to)->format('F Y')}}</strong>
-                        to do the following:
+                           to do the following:  
                         </span>
                         @endif
 
                         <span
                             class="block pl-5 my-auto font-semibold tracking-wide text-left text-black whitespace-pre-line text-md">
-                            {{ $travel_order->purpose}}
+                           {{ $travel_order->purpose}}
                         </span>
                         @foreach ($signatories as $signatory)
                         <span class="block pt-16 font-semibold tracking-wide text-center text-black text-md">
@@ -92,7 +93,7 @@
                         </span>
 
                         @php
-                        $sigpositions =
+                        $sigpositions = 
                         App\Models\Office::orWhere('admin_user_id','=',$signatory->user_id)->orWhere('head_id','=',$signatory->user_id)->get();
                         $campuses = App\Models\Campus::orWhere('admin_user_id','=',$signatory->user_id)->get();
                         $campusCount= count($campuses);
@@ -146,6 +147,103 @@
                     </div>
                 </div>
             </div>
+
+                @else
+
+                <div id="contents" class="flex w-full h-auto px-4 pt-2">
+                <div id="header" class="items-start block w-full space-y-3 text-left">
+                    <div class="flex-wrap block -space-y-2">
+                        <span class="font-semibold tracking-wide text-left text-black text-md">You are hereby directed
+                            to proceed to <strong>
+                                @if ($travel_order->others!="")
+                                {{$travel_order->others}}, {{$travel_order->city->city_municipality_description}},
+                                {{$travel_order->province->province_description}},
+                                {{ $travel_order->region->region_description }}
+                                @else
+                                {{$travel_order->city->city_municipality_description}},
+                                {{$travel_order->province->province_description}},
+                                {{ $travel_order->region->region_description }}
+                                @endif
+                            </strong> on the
+                            @if ($travel_order->date_of_travel_from == $travel_order->date_of_travel_to) <strong
+                                class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('F Y')}}</strong>
+                            to do the following:
+                        </span>
+                        @else
+                        <strong
+                            class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_from)->format('F Y')}}</strong> to <strong
+                            class="underline">{{ Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_to)->format('jS').' of '.Carbon\Carbon::createFromFormat('Y-m-d',$travel_order->date_of_travel_to)->format('F Y')}}</strong>
+                        to do the following:
+                        </span>
+                        @endif
+
+                        <span
+                            class="block pl-5 my-auto font-semibold tracking-wide text-left text-black whitespace-pre-line text-md">
+                            {{ $travel_order->purpose}}
+                        </span>
+                        @foreach ($signatories as $signatory)
+                        <span class="block pt-16 font-semibold tracking-wide text-center text-black text-md">
+                            {{ $signatory->employee_information->full_name}}
+                        </span>
+
+                        @php
+                        $sigpositions = 
+                        App\Models\Office::orWhere('admin_user_id','=',$signatory->user_id)->orWhere('head_id','=',$signatory->user_id)->get();
+                        $campuses = App\Models\Campus::orWhere('admin_user_id','=',$signatory->user_id)->get();
+                        $campusCount= count($campuses);
+                        $posCount= count($sigpositions);
+                        @endphp
+                        <span class="block pt-3 font-semibold tracking-wide text-center text-black text-md">
+                            @if ($campusCount >= 1)
+
+                            @foreach ($campuses as $campus)
+
+                            @if (strtoupper($campus->name)=="PRESIDENT'S OFFICE")
+                            @if ($campusCount==$loop->index+1)
+                            {{ $signatory->employee_information->position->position_desc}}
+                            @else
+                            {{ $signatory->employee_information->position->position_desc}} /
+                            @endif
+                            @else
+                            @if ($campusCount==$loop->index+1)
+                            {{ $signatory->employee_information->position->position_desc}} of {{ $campus->name}} Campus
+                            @else
+                            {{ $signatory->employee_information->position->position_desc}} of {{ $campus->name}} /
+                            @endif
+                            @endif
+
+                            @endforeach
+
+                            @elseif ($campusCount == 0 && $posCount >= 1)
+                            @foreach ($sigpositions as $sigpos)
+
+                            @if (strtoupper($sigpos->office_name)=="PRESIDENT'S OFFICE")
+                            @if ($posCount==$loop->index+1)
+                            {{ $signatory->employee_information->position->position_desc}}
+                            @else
+                            {{ $signatory->employee_information->position->position_desc}} /
+                            @endif
+                            @else
+                            @if ($posCount==$loop->index+1)
+                            {{ $signatory->employee_information->position->position_desc}} of {{ $sigpos->office_name}}
+                            @else
+                            {{ $signatory->employee_information->position->position_desc}} of {{ $sigpos->office_name}} /
+                            @endif
+                            @endif
+
+                            @endforeach
+                            @endif
+
+                        </span>
+
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+
+            @endif
+            
         </div>
     </div>
     @push('scripts')
