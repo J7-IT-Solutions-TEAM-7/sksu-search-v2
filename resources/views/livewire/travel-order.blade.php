@@ -136,7 +136,11 @@
                                 id="{{ $key.rand(500,999)}}">
                                 <div class="flex items-center col-span-1">
                                     <div>
-                                        @if ($sigInfo)
+                                        @if ($sigInfo && isset($travel_order))
+                                        <img class="inline-block w-10 h-10 rounded-full"
+                                            src="{{$sigInfo->avatar != null ? asset($sigInfo->avatar) : asset($sigInfo->employee_information->user->profile_photo_url)}}"
+                                            alt="">
+                                        @elseif($sigInfo)
                                         <img class="inline-block w-10 h-10 rounded-full"
                                             src="{{$sigInfo->avatar != null ? asset($sigInfo->avatar) : asset($sigInfo->user->profile_photo_url)}}"
                                             alt="">
@@ -147,7 +151,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            @if ($sigInfo)
+                                            @if ($sigInfo && isset($travel_order))
+                                            {{ $sigInfo->employee_information->full_name }}
+                                            @elseif($sigInfo)
                                             {{ $sigInfo->full_name }}
                                             @else
                                             NOT SET
@@ -356,9 +362,16 @@
                        
           </div >
         @endif
-         <button type="submit" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
+        @if (isset($travel_order))
+             <button type="submit" wire:click="editTravelOrder()" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
+                        Save
+            </button>
+            @else
+             <button type="submit" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
                         Submit
-                        </button>
+        </button>
+        @endif
+        
                         <button class="float-right px-3 py-1 mx-2 my-4 bg-white border rounded-lg text-primary-500 border-primary-500">
                         Cancel
                         </button>

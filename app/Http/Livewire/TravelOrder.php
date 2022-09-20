@@ -12,12 +12,14 @@ use App\Models\Travel_Order_Applicant;
 use App\Models\Travel_Order_Signatory;
 use Carbon\Carbon;
 use Filament\Notifications\Notification;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 
 class TravelOrder extends Component
 {
     public $isDraft = true;
+    public $isEdit = false;
     public $toValidated = false;
 
     public $toType = "offtravel";
@@ -52,6 +54,55 @@ class TravelOrder extends Component
      public $travel_draft_made = false;
      public $travel_order_applicants;
      public $travel_order;
+
+     public function mount()
+    {
+       if(isset(request()->isEdit))
+       {
+            $applicants = Travel_Order_Applicant::where('travel_order_id', request()->travelOrderID)->get();
+
+            foreach($applicants as $applicant)
+            {
+                $this->setUser($applicant->employee_id);
+            }
+            $signatories = Travel_Order_Signatory::where('travel_order_id', request()->travelOrderID)->get();
+            foreach($signatories as $sigs)
+            {
+                $this->setSignatory($sigs->user_id);
+            }
+            $this->travel_order = Travel_Order::find(request()->travelOrderID);
+
+            $this->toType = $this->travel_order->to_type;
+            $this->purpose = $this->travel_order->purpose;
+            $this->dateoftravelfrom = $this->travel_order->date_of_travel_from;
+            $this->dateoftravelto = $this->travel_order->date_of_travel_to;
+
+
+           
+            $this->region_codes = $this->travel_order->philippine_regions_id == 0 ? 'Region Not Set': $this->travel_order->region->region_code;
+            $this->province_codes = $this->travel_order->philippine_provinces_id == 0 ? 'Province Not Set': $this->travel_order->province->province_code;
+            $this->city_codes = $this->travel_order->philippine_cities_id == 0 ? 'City Not Set': $this->travel_order->city->city_municipality_code;
+            $this->others =  $this->travel_order->others;
+            $this->has_registration = $this->travel_order->has_registration;
+            $this->has_registration = $this->travel_order->has_registration;
+            $this->registration_amt = $this->travel_order->registration_amount;
+            // if($this->travel_order->has_registration)
+            // {
+
+            // }
+       }
+        // $this->isEdit = request()->isEdit;
+        // if($this->isEdit == true || $this->isEdit == 1){
+        //     $this->travel_order = TravelOrder::find(request()->travelOrderID);
+
+        //     // $this->travel_order_applicants = TravelOrderApplicant::find(request()->travelOrderID);
+
+        //     $this->TOforEditID = $this->travelOrderForpassingID = request()->travelOrderID;
+        //     $this->ispopulating =true;
+        //     $this->populateForEdit();
+        // }
+    }
+
 
     public function render()
     {
@@ -132,6 +183,9 @@ class TravelOrder extends Component
 
     public function submit()
     {
+ 
+
+
         if (count($this->applicant_ids) > 0 && count($this->signatory_ids) > 0) {
            if($this->toType == "offtime")
             {
@@ -172,6 +226,8 @@ class TravelOrder extends Component
                         'dateoftravelto.required' => 'This field is required.',
                     ]
                 );
+                $this->toValidated = true;
+                $this->save_official_travel();
             }
            
                
@@ -185,19 +241,16 @@ class TravelOrder extends Component
 
 
                 return redirect()->route('mytravelorders');
-            // if ($this->toType == "offtime") {
-            //     $this->save_official_time();
-            // } else if ($this->toType == "offtravel") {
-            //     // $this->itViewCtr = 0;
-            //     // $this->iteneraryValidated = false;
-            //     // $this->isDraft = false;
-            //     $this->save_official_travel();
-            //    // $this->validateTo();
-            // }
+           
         } else {
             
             $this->showApplicantError = $this->showSignatoryError = true;
         }
+    }
+
+    public function editTravelOrder()
+    {
+        dd("save edited travel order!!!");
     }
 
     public function save_official_travel()

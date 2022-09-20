@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('travel__orders', function (Blueprint $table) {
             $table->id();
             $table ->string('tracking_code')->nullable();
-            $table->string('purpose')->nullable();
+            $table->text('purpose')->nullable();
             $table->string('date_of_travel_from')->nullable();
             $table->string('date_of_travel_to')->nullable();
             $table->integer('philippine_regions_id')->nullable();

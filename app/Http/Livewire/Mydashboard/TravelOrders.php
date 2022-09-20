@@ -37,7 +37,7 @@ class TravelOrders extends Component implements HasTable
     {
         return [
             Tables\Columns\TextColumn::make('tracking_code')->searchable(),
-            Tables\Columns\TextColumn::make('purpose')->searchable(),
+            Tables\Columns\TextColumn::make('purpose')->limit(30)->searchable(),
             Tables\Columns\TextColumn::make('date_range')->searchable(),
         ];
     }
