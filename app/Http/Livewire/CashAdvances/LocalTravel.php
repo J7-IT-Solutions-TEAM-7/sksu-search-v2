@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\CashAdvances;
 
+use App\Http\Livewire\TravelOrder;
 use Livewire\Component;
 use App\Models\Activity_Cash_Advance;
 use App\Models\Employee_information;
 use App\Models\Travel_Order;
+use App\Models\Travel_Order_Applicant;
 use App\Models\Travel_Order_Cash_Advance;
 use App\Models\User;
 use Carbon\Carbon;
@@ -54,12 +56,15 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
      public $signatory;
      public $other_reason;
      public $travel_order_id;
-     
+     public $travel_orders;
+     public $travel_order_ids;
  
      public $employee;
-    
+        
     
     public function mount(){
+        $this->travel_orders = Travel_Order_Applicant::where('employee_id','=',auth()->user()->employee_information->id)->pluck('travel_order_id');
+       
         $this->form->fill([
             "tracking_number"=>"DV_".now()->format('Y').'-'.now()->format('m').'-'.rand(1,999),
         ]);
@@ -74,8 +79,8 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                     Select::make('travel_order_id')
                     ->label('Import Travel Order')
                     ->searchable()
-                    ->getSearchResultsUsing(fn (string $search) => Travel_Order::where('id', 'in', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
-                    ->getOptionLabelUsing(fn ($value): ?string => User::find($value)?->name),
+                    ->getSearchResultsUsing(fn (string $search) => Travel_Order::where('id','in',$this->travel_orders)->where('purpose', 'like', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
+                    ->getOptionLabelUsing(fn ($value): ?string => Travel_Order::find($value)?->purpose),
                     TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required(),
                     Grid::make(3)->schema([
                         TextInput::make('amount')->columnSpan(1)->reactive()->numeric()->required(),
@@ -195,7 +200,8 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
     }
  
     public function submit(): void
-    {dd('fuckthis');
+    {
+        dd('fuckthis');
     }
     public static function getCleanOptionString(Model $model): string
     {
@@ -207,6 +213,7 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                     ->render()
         );
     }
+    
     public function render()
     {
         return view('livewire.cash-advances.local-travel');
