@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\CashAdvances;
 
+use Livewire\Component;
 use App\Models\Activity_Cash_Advance;
 use App\Models\Employee_information;
+use App\Models\Travel_Order;
+use App\Models\Travel_Order_Cash_Advance;
 use App\Models\User;
 use Carbon\Carbon;
 use Closure;
-use Livewire\Component;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
@@ -26,63 +28,55 @@ use Illuminate\Database\Eloquent\Model;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Support\HtmlString;
 
-class Activity extends Component implements Forms\Contracts\HasForms
+
+class LocalTravel extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
-    public Activity_Cash_Advance $activity;
-
-    //vars for input title, amount, date_from, date_to, cheque_release, due_date, employee_id, dv_id
-    public $activity_name;
-    public $amount;
-    public $date_from;
-    public $date_to;
-
-    public $proponent;//if toggled
-    public $employee_id;//if toggled
-    public $is_registered=true;
-    public $mode_of_payment;
-    //particulars
-    // public $entry;
-    public $responsibility_center;
-    public $mfo_pap;
-    public $signatory_id;
-    public $tracking_number;   
-    public $cheque_release;
-    public $due_date;    
-    public $signatory;
-    public $other_reason;
+    public Travel_Order_Cash_Advance $activity;
+     //vars for input title, amount, date_from, date_to, cheque_release, due_date, employee_id, dv_id
+     public $activity_name;
+     public $amount;
+     public $date_from;
+     public $date_to;
+ 
+     public $proponent;//if toggled
+     public $employee_id;//if toggled
+     public $is_registered=true;
+     public $mode_of_payment;
+     //particulars
+     // public $entry;
+     public $responsibility_center;
+     public $mfo_pap;
+     public $signatory_id;
+     public $tracking_number;   
+     public $cheque_release;
+     public $due_date;    
+     public $signatory;
+     public $other_reason;
+     public $travel_order_id;
+     
+ 
+     public $employee;
     
-
-    public $employee;
-
-    protected $rules = [
-        'activity_name' => 'required',
-        'amount'=>'required|numeric',
-        'date_from'=>'required|date',        
-        'date_to' => 'required|date|after:date_from',
-        'proponent'=>'exclude_if:is_registered,true|required',
-        'employee_id'=>'exclude_if:is_registered,false|required',
-        'signatory_id'=>'required',
-        'mode_of_payment'=>'required',
-        'other_reason'=>'exclude_unless:mode_of_payment,other|required',
-        'due_date' => 'required',
-        'dv_id' => 'required',
-    ];
-
+    
     public function mount(){
         $this->form->fill([
             "tracking_number"=>"DV_".now()->format('Y').'-'.now()->format('m').'-'.rand(1,999),
         ]);
     }
-
     public function getFormSchema()
     {
         return [
             Wizard::make([
-                Step::make('Activity Information')->schema([
+                Step::make('Travel Information')->schema([
                     
                    Grid::make(4)->schema([
-                    TextInput::make('activity_name')->columnSpan(4)->autofocus(true)->reactive()->required(),
+                    Select::make('travel_order_id')
+                    ->label('Import Travel Order')
+                    ->searchable()
+                    ->getSearchResultsUsing(fn (string $search) => Travel_Order::where('id', 'in', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
+                    ->getOptionLabelUsing(fn ($value): ?string => User::find($value)?->name),
+                    TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required(),
                     Grid::make(3)->schema([
                         TextInput::make('amount')->columnSpan(1)->reactive()->numeric()->required(),
                         DatePicker::make('date_from')->columnSpan(1)->reactive()->format('Y-m-d')->required(),
@@ -183,7 +177,6 @@ class Activity extends Component implements Forms\Contracts\HasForms
         ];
     }
 
-    
     public function updated($name, $value){
        if($name == "date_from"){
         $this->date_from = Carbon::createFromDate($this->date_from)->format("Y-m-d");
@@ -214,11 +207,8 @@ class Activity extends Component implements Forms\Contracts\HasForms
                     ->render()
         );
     }
-
-
-
-    public function render(): View
+    public function render()
     {
-        return view('livewire.cash-advances.activity');
+        return view('livewire.cash-advances.local-travel');
     }
 }

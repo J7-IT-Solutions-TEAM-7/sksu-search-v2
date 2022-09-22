@@ -10,10 +10,11 @@
         <title>{{ config('app.name') }}</title>
 
         <style>[x-cloak] { display: none !important; }</style>
+        <link rel="icon" href="{{ url('css/favicon.jpg') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
         @livewireScripts
-        @stack('scripts')
+       
     </head>
 
     <body class="font-sans antialiased">
@@ -34,4 +35,5 @@
          
         @livewire('notifications')
     </body>
+    @stack('scripts')
 </html>

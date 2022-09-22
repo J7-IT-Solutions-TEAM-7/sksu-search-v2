@@ -50,6 +50,10 @@ Route::middleware([
         return view('activity-cash-advances');
     })
     ->name('ca-activity');
+    Route::get('/cash-advance/local-travel', function (){
+        return view('local-travel-cash-advances');
+    })
+    ->name('ca-local-travel');
 
     //mydashboard links
 

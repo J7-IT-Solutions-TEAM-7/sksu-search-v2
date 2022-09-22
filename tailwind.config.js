@@ -4,12 +4,6 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
     mode: "jit",
-    purge: [
-        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
-        "./vendor/laravel/jetstream/**/*.blade.php",
-        "./storage/framework/views/*.php",
-        "./resources/views/**/*.blade.php",
-    ],
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -19,12 +13,21 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontSize:{
+                '12':'12px',
+                '10':'10px',
+                '8':'8px',
+            },
+            screens: {
+                'print': { 'raw': 'print' },
+            },
             colors: {
                  spacing:{
                 'screen-80': '80vh',
                 },
                 fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                serif: "Times New Roman",
                 },
                 danger: colors.rose,
                  primary: colors.blue,

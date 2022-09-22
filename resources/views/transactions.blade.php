@@ -62,9 +62,9 @@
                             class="rounded-xl bg-primary-300 text-white py-2 lg:flex gap-4 md:grid-cols-5 items-center"
                             x-cloak x-show="open">
                             <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3 capitalize">
-                                <span
+                                    <a href="{{ route('ca-local-travel') }}"
                                     class="text-left group-hover:cursor-pointer hover:bg-primary-500 px-2 rounded-md">Local
-                                    Travel</span>
+                                    Travel</a>
                             </li>
                             <li class="overflow-hidden group hover:cursor-pointer flex rounded-md py-2 px-3 capitalize">
                                 <span
