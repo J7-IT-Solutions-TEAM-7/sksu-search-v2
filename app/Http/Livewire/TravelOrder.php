@@ -90,6 +90,9 @@ class TravelOrder extends Component
             // {
 
             // }
+       }else{
+        $applicant = Employee_information::where('id', auth()->user()->id)->first();
+        $this->setUser($applicant->id);
        }
         // $this->isEdit = request()->isEdit;
         // if($this->isEdit == true || $this->isEdit == 1){
@@ -383,16 +386,34 @@ class TravelOrder extends Component
             ]
         );
 
+        // $count_applicants = Travel_Order_Applicant::where('travel_order_id', $id)->count();
+        // $travel_order_applicants = Travel_Order_Applicant::where('travel_order_id', $id)->get();
+        // if(($count_applicants == count($this->applicant_ids)) && (in_array(398, $this->applicant_ids)))
+        // {
+        //     dd("dont update!");
+        // }else{
+        //     dd("update!");
+        // }
+
         // $travel_order_applicants = Travel_Order_Applicant::where('travel_order_id', request()->travelOrderID)->update([
         //     'employee_id'=>
         // ]);
-  
+        $this->saveApplicants($id);
         $travel_order_update = Travel_Order::find($id)->update([
                 'purpose'=>$this->purpose,
                 'date_of_travel_from' => $this->dateoftravelfrom,
                 'date_of_travel_to' => $this->dateoftravelto,
                 'date_range' => $date_string,
                 'to_type' => $this->toType,
+                'philippine_regions_id' => null,
+                'philippine_provinces_id' => null,
+                'philippine_cities_id' => null,
+                'others' => '',
+                'has_registration' => 0,
+                'registration_amount' => null,
+                'total' => null,
+                'dte_id' => null,
+                'isDraft' => 0,
         ]);
 
         if($travel_order_update)
@@ -416,6 +437,7 @@ class TravelOrder extends Component
         $from_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelfrom)->format('F d, Y');
         $to_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelto)->format('F d, Y');
         $date_string = $from_date . " - " . $to_date;
+        
         $this->validate(
             [
                 'purpose' => 'required',
@@ -434,7 +456,7 @@ class TravelOrder extends Component
                 'city_codes.required' => 'Select a city/municipality.',
             ]
         );
-
+        $this->saveApplicants($id);
         $travel_order_update = Travel_Order::find($id)->update([
             'purpose'=>$this->purpose,
             'date_of_travel_from' => $this->dateoftravelfrom,
@@ -447,6 +469,9 @@ class TravelOrder extends Component
             'others' =>  $this->others,
             'has_registration' => $this->has_registration,
             'registration_amount' => $this->registration_amt,
+            'total' => $this->registration_amt,
+            'isDraft' => 0,
+            'dte_id' => $reg['id'],
         ]);
 
 

@@ -21,6 +21,9 @@ class Travel_Order extends Model
         'others',
         'has_registration',
         'registration_amount',
+        'total',
+        'isDraft',
+        'dte_id',
     ];
 
     public function itinerary(){
