@@ -9,6 +9,20 @@ class Travel_Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'to_type',
+        'purpose',
+        'date_of_travel_from',
+        'date_of_travel_to',
+        'date_range',
+        'philippine_regions_id',
+        'philippine_provinces_id',
+        'philippine_cities_id',
+        'others',
+        'has_registration',
+        'registration_amount',
+    ];
+
     public function itinerary(){
         return $this->belongsTo('App\Models\Itinerary');
     }

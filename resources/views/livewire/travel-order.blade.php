@@ -306,7 +306,7 @@
                         <div>
                 <div class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500">
                 <label for="others" class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-700 bg-gray-100 -top-2 left-2">Others</label>
-                <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm">
+                <input type="text" name="others" id="others" class="block w-full p-0 text-gray-700 placeholder-gray-500 bg-gray-100 border-0 focus:ring-0 sm:text-sm" wire:model="others">
                 </div>
                 </div>
                 </div>
@@ -363,7 +363,7 @@
           </div >
         @endif
         @if (isset($travel_order))
-             <button type="submit" wire:click="editTravelOrder()" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
+             <button type="button" wire:click="editTravelOrder()" class="float-right px-3 py-1 mx-2 my-4 text-white border border-white rounded-lg bg-primary-500">
                         Save
             </button>
             @else

@@ -18,9 +18,12 @@ class Employee_information extends Model
         'last_name',
         'full_name',
         'address',
+        'birthday',
+        'contact_number',
         'role_id',
         'office_id',
         'position_id',
+        'bond_id',
     ];
 
     public function user(){

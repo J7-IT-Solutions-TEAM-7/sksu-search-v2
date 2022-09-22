@@ -219,9 +219,9 @@ class TravelOrder extends Component
                     [
                         'users_id.required' => 'The name field is required.',
                         'purpose.required' => 'The purpose field is required.',
-                        'region_codes.required' => 'The region field is required.',
-                        'province_codes.required' => 'The province field is required.',
-                        'city_codes.required' => 'The city field is required.',
+                        'region_codes.required' => 'Select a region.',
+                        'province_codes.required' => 'Select a province.',
+                        'city_codes.required' => 'Select a city/municipality.',
                         'dateoftravelfrom.required' => 'This field is required.',
                         'dateoftravelto.required' => 'This field is required.',
                     ]
@@ -250,7 +250,13 @@ class TravelOrder extends Component
 
     public function editTravelOrder()
     {
-        dd("save edited travel order!!!");
+        $id = $this->travel_order->id;
+        if($this->toType == "offtime")
+        {
+            $this->update_official_time($id);
+        }else{
+            $this->update_official_travel($id);
+        }
     }
 
     public function save_official_travel()
@@ -357,6 +363,103 @@ class TravelOrder extends Component
 
         //     $this->travel_draft_made = true;
         // }
+    }
+
+    public function update_official_time($id)
+    {
+        $from_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelfrom)->format('F d, Y');
+        $to_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelto)->format('F d, Y');
+        $date_string = $from_date . " - " . $to_date;
+        $this->validate(
+            [
+                'purpose' => 'required',
+                'dateoftravelfrom' =>'required',
+                'dateoftravelto' => 'required',
+            ],
+            [
+                'purpose.required' => 'The purpose field is required.',
+                'dateoftravelfrom.required' => 'This field is required.',
+                'dateoftravelto.required' => 'This field is required.',
+            ]
+        );
+
+        // $travel_order_applicants = Travel_Order_Applicant::where('travel_order_id', request()->travelOrderID)->update([
+        //     'employee_id'=>
+        // ]);
+  
+        $travel_order_update = Travel_Order::find($id)->update([
+                'purpose'=>$this->purpose,
+                'date_of_travel_from' => $this->dateoftravelfrom,
+                'date_of_travel_to' => $this->dateoftravelto,
+                'date_range' => $date_string,
+                'to_type' => $this->toType,
+        ]);
+
+        if($travel_order_update)
+        {
+            Notification::make() 
+            ->title('Travel Order Updated Successfully')
+            ->iconColor('success') 
+            ->success()
+            ->send(); 
+
+            return redirect()->route('mytravelorders');
+        }
+
+    }
+
+    public function update_official_travel($id)
+    {
+        $reg = Region::where("region_code", "=",  $this->region_codes)->first();
+        $prov = Province::where("province_code", "=",  $this->province_codes)->first();
+        $cit = City::where("city_municipality_code", "=",  $this->city_codes)->first();
+        $from_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelfrom)->format('F d, Y');
+        $to_date = Carbon::createFromFormat('Y-m-d', $this->dateoftravelto)->format('F d, Y');
+        $date_string = $from_date . " - " . $to_date;
+        $this->validate(
+            [
+                'purpose' => 'required',
+                'dateoftravelfrom' =>'required',
+                'dateoftravelto' => 'required',
+                'region_codes' => 'required',
+                'province_codes' => 'required',
+                'city_codes' => 'required',
+            ],
+            [
+                'purpose.required' => 'The purpose field is required.',
+                'dateoftravelfrom.required' => 'This field is required.',
+                'dateoftravelto.required' => 'This field is required.',
+                'region_codes.required' => 'Select a region.',
+                'province_codes.required' => 'Select a province.',
+                'city_codes.required' => 'Select a city/municipality.',
+            ]
+        );
+
+        $travel_order_update = Travel_Order::find($id)->update([
+            'purpose'=>$this->purpose,
+            'date_of_travel_from' => $this->dateoftravelfrom,
+            'date_of_travel_to' => $this->dateoftravelto,
+            'date_range' => $date_string,
+            'to_type' => $this->toType,
+            'philippine_regions_id' =>  $reg['id'],
+            'philippine_provinces_id' => $prov['id'],
+            'philippine_cities_id' => $cit['id'],
+            'others' =>  $this->others,
+            'has_registration' => $this->has_registration,
+            'registration_amount' => $this->registration_amt,
+        ]);
+
+
+        if($travel_order_update)
+        {
+            Notification::make() 
+            ->title('Travel Order Updated Successfully')
+            ->iconColor('success') 
+            ->success()
+            ->send(); 
+
+            return redirect()->route('mytravelorders');
+        } 
     }
 
 }
