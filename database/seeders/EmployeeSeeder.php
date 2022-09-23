@@ -970,14 +970,14 @@ class EmployeeSeeder extends Seeder
          ]);
 
          DB::table('users')->insert([
-            'email' => 'rolandohechanova@sksu.edu.ph',
-            'password' => Hash::make('hechanova123'),
+            'email' => 'samsonmolao@sksu.edu.ph',
+            'password' => Hash::make('molao123'),
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ROLANDO F. HECHANOVA, RPAE, PhD',
-            'first_name' => 'ROLANDO',
-            'last_name' => 'HECHANOVA',
+            'full_name' => 'SAMSON L. MOLAO',
+            'first_name' => 'SAMSON',
+            'last_name' => 'MOLAO',
             'user_id' => 64,
             'role_id' => 2,
             'office_id' => 51,

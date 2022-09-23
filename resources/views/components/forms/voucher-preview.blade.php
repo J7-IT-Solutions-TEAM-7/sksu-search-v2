@@ -33,7 +33,7 @@
 						<div class="flex">
 							<div class="m-3 text-center">
 
-								<img class="h-auto w-12"
+								<img class="h-auto w-12 mx-auto"
 									src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $evaluate(fn($get) => $get('tracking_number')) }}"
 									alt="shet">
 								<span

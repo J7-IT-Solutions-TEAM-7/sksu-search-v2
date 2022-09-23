@@ -380,9 +380,9 @@
         </button>
         @endif
         
-                        <button class="float-right px-3 py-1 mx-2 my-4 bg-white border rounded-lg text-primary-500 border-primary-500">
+                        <a href="{{route('trans')}}" class="float-right px-3 py-1 mx-2 my-4 bg-white border rounded-lg text-primary-500 border-primary-500">
                         Cancel
-                        </button>
+                        </a>
     </div>
     </div>
          </div>

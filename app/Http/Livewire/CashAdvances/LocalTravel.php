@@ -85,11 +85,19 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                     ->afterStateUpdated(function (Closure $set, Closure $get){
                         $travel_order_details = Travel_Order::where('id', $get('travel_order_id'))->first();
 
-
-                        $set('activity_name', $travel_order_details->purpose);
-                        $set('amount', $travel_order_details->total);
-                        $set('date_from', $travel_order_details->date_of_travel_from);
-                        $set('date_to', $travel_order_details->date_of_travel_to);
+                        if($travel_order_details != null)
+                        {
+                            $set('activity_name', $travel_order_details->purpose);
+                            $set('amount', $travel_order_details->total);
+                            $set('date_from', $travel_order_details->date_of_travel_from);
+                            $set('date_to', $travel_order_details->date_of_travel_to);
+                        }else{
+                            $set('activity_name', '');
+                            $set('amount', '');
+                            $set('date_from', '');
+                            $set('date_to', '');
+                        }
+                      
 
                     }),
                     TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required()->disabled(),
@@ -103,17 +111,17 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                 ]),
 
                 Step::make('Disbursement Voucher Information')->schema([
-                    Toggle::make("is_registered")->label("Is user registered on the system?")
-                    ->inline(false)
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                        $set('is_registered', $state);})
-                    ->onIcon('heroicon-s-lightning-bolt')
-                    ->offIcon('heroicon-s-user')
-                    ->columnSpan(1)
-                    ->reactive(),
+                    // Toggle::make("is_registered")->label("Is user registered on the system?")
+                    // ->inline(false)
+                    // ->afterStateUpdated(function (Closure $set, $state) {
+                    //     $set('is_registered', $state);})
+                    // ->onIcon('heroicon-s-lightning-bolt')
+                    // ->offIcon('heroicon-s-user')
+                    // ->columnSpan(1)
+                    // ->reactive(),
                    Grid::make(4)->schema([
                     TextInput::make('tracking_number')->label("DV Tracking Number")->columnSpan(1)->reactive()->required()->disabled(),
-                    TextInput::make('proponent')->label('Requisitioner')->columnSpan(3)->visible($this->is_registered == false)->hidden($this->is_registered == true)->required()->rules(['exclude_if:is_registered,true']),                    
+                    TextInput::make('proponent')->label('Requisitioner')->columnSpan(3)->visible($this->is_registered == false)->hidden($this->is_registered == true)->required()->rules(['exclude_if:is_registered,true']),                
                     Select::make('employee_id')->required()->rules(['exclude_if:is_registered,false'])
                         ->visible($this->is_registered == true)
                         ->hidden($this->is_registered == false)
