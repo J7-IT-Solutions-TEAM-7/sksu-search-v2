@@ -34,7 +34,7 @@ class OfficeResource extends Resource
         return $form
             ->schema([
                 TextInput::make('office_name')->required(),
-                TextInput::make('office_code')->label(__('Code'))->minLength(7)->maxLength(8)->required(),
+                TextInput::make('office_code')->label(__('Code'))->minLength(4)->maxLength(8)->required(),
                 Select::make('campus_id')
                 ->label('Campus')
                 ->options(Campus::all()->pluck('name', 'id'))

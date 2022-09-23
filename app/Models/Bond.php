@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bond extends Model
 {
+    protected $fillable = [
+        'bond_name',
+        'employee_id',
+        'validity_date',
+    ];
+
     use HasFactory;
 
     public function employee_information(){

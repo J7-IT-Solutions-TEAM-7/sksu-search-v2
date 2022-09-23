@@ -28,7 +28,7 @@ class UserAccountResource extends Resource
 
     protected static ?int $navigationSort = 7;
 
-    protected static ?string $navigationGroup = 'Employees';
+    protected static ?string $navigationGroup = 'Employees'; 
 
     public static function form(Form $form): Form
     {

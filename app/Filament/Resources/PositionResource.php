@@ -29,7 +29,7 @@ class PositionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('position_code')->label(__('Code'))->minLength(4)->maxLength(6)->required(),
+                TextInput::make('position_code')->label(__('Code'))->minLength(2)->maxLength(6)->required(),
                 TextInput::make('position_desc')->required(),
             ]);
     }
