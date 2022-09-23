@@ -77,10 +77,10 @@
 							<div class="flex h-5 items-center">
 								@if ($mop == 'MD5')
 									<input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled checked>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled checked>
 								@else
 									<input id="comments" aria-describedby="comments-description" name="comments" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled>
 								@endif
 
 							</div>
@@ -93,10 +93,10 @@
 							<div class="flex h-5 items-center">
 								@if ($mop == 'Commercial Check')
 									<input id="candidates" aria-describedby="candidates-description" name="candidates" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled checked>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled checked>
 								@else
 									<input id="candidates" aria-describedby="candidates-description" name="candidates" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled>
 								@endif
 
 							</div>
@@ -109,10 +109,10 @@
 							<div class="flex h-5 items-center">
 								@if ($mop == 'ADA')
 									<input id="offers" aria-describedby="offers-description" name="offers" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled checked>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled checked>
 								@else
 									<input id="offers" aria-describedby="offers-description" name="offers" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled>
 								@endif
 
 							</div>
@@ -125,10 +125,10 @@
 							<div class="flex h-5 items-center">
 								@if ($mop == 'Others')
 									<input id="offers" aria-describedby="offers-description" name="offers" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled checked>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled checked>
 								@else
 									<input id="offers" aria-describedby="offers-description" name="offers" type="checkbox"
-										class="h-4 w-4 border-black text-indigo-600 focus:ring-indigo-500" readonly disabled>
+										class="h-4 w-4 border-black text-primary-500 focus:ring-primary-500" readonly disabled>
 								@endif
 
 							</div>
@@ -434,7 +434,7 @@
 			</div>
 		</div>
 		<button type="button" onclick="printDiv('dvPrint')"
-			class="mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+			class="mt-2 inline-flex items-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-xs font-medium text-white shadow-sm hover:bg-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
 			<!-- Heroicon name: mini/envelope -->
 
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="-ml-1 mr-2 h-5 w-5">

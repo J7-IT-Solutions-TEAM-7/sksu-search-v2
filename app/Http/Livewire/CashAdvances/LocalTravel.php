@@ -79,7 +79,7 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                     Select::make('travel_order_id')
                     ->label('Import Travel Order')
                     ->searchable()
-                    ->getSearchResultsUsing(fn (string $search) => Travel_Order::where('id','in',$this->travel_orders)->where('purpose', 'like', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
+                    ->getSearchResultsUsing(fn (string $search) => Travel_Order::whereIn('id',$this->travel_orders)->where('purpose', 'like', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
                     ->getOptionLabelUsing(fn ($value): ?string => Travel_Order::find($value)?->purpose),
                     TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required(),
                     Grid::make(3)->schema([
@@ -201,7 +201,7 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
  
     public function submit(): void
     {
-        dd('fuckthis');
+        dd('test');
     }
     public static function getCleanOptionString(Model $model): string
     {

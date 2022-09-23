@@ -56,27 +56,19 @@
                                         @endif
                                     </div>
                                     <div class="ml-3">
-                                        
+                                         <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                                            @if ($userInfo)
+                                            {{ $userInfo->full_name }}
+                                            @else
+                                            NOT SET
+                                            @endif
                                         </p>
                                         @if ($userInfo->id == auth()->user()->id)
-                                        <div class="flex gap-8 ">
                                         <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            @if ($userInfo)
-                                            {{ $userInfo->full_name }}
-                                            @else
-                                            NOT SET
-                                            @endif
-                                           <p class="text-xs font-semibold inline-block flex-shrink-0 px-2 py-0.5 tracking-wider text-primary-500 cursor-pointer rounded-full bg-green-100">
-                                            You
+                                           <p class="text-xs font-semibold tracking-wider text-primary-500 cursor-pointer">
+                                            Default
                                         </p>
-                                        </div>
                                         @else
-                                        <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            @if ($userInfo)
-                                            {{ $userInfo->full_name }}
-                                            @else
-                                            NOT SET
-                                            @endif
                                         <p class="text-xs font-semibold tracking-wider text-blue-700 cursor-pointer hover:underline group-hover:text-white"
                                             x-on:click="$wire.unSetUser({{ $userInfo->id }})">
                                             Remove

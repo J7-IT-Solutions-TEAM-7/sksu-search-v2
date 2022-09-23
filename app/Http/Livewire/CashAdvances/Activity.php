@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\CashAdvances;
 
 use App\Models\Activity_Cash_Advance;
+use App\Models\Disbursement_Voucher;
 use App\Models\Employee_information;
 use App\Models\User;
 use Carbon\Carbon;
@@ -202,7 +203,8 @@ class Activity extends Component implements Forms\Contracts\HasForms
     }
  
     public function submit(): void
-    {dd('fuckthis');
+    { 
+        Disbursement_Voucher::create($this->form->getState());
     }
     public static function getCleanOptionString(Model $model): string
     {
