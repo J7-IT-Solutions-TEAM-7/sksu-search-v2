@@ -80,12 +80,23 @@ class LocalTravel extends Component implements Forms\Contracts\HasForms
                     ->label('Import Travel Order')
                     ->searchable()
                     ->getSearchResultsUsing(fn (string $search) => Travel_Order::whereIn('id',$this->travel_orders)->where('purpose', 'like', "%{$search}%")->limit(50)->pluck('purpose', 'id'))
-                    ->getOptionLabelUsing(fn ($value): ?string => Travel_Order::find($value)?->purpose),
-                    TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required(),
+                    ->getOptionLabelUsing(fn ($value): ?string => Travel_Order::find($value)?->purpose)
+                    ->reactive()
+                    ->afterStateUpdated(function (Closure $set, Closure $get){
+                        $travel_order_details = Travel_Order::where('id', $get('travel_order_id'))->first();
+
+
+                        $set('activity_name', $travel_order_details->purpose);
+                        $set('amount', $travel_order_details->total);
+                        $set('date_from', $travel_order_details->date_of_travel_from);
+                        $set('date_to', $travel_order_details->date_of_travel_to);
+
+                    }),
+                    TextInput::make('activity_name')->label("Purpose")->columnSpan(4)->autofocus(true)->reactive()->required()->disabled(),
                     Grid::make(3)->schema([
-                        TextInput::make('amount')->columnSpan(1)->reactive()->numeric()->required(),
-                        DatePicker::make('date_from')->columnSpan(1)->reactive()->format('Y-m-d')->required(),
-                        DatePicker::make('date_to')->columnSpan(1)->format('Y-m-d')->reactive()->required()->afterOrEqual('date_from'),
+                        TextInput::make('amount')->columnSpan(1)->reactive()->numeric()->required()->disabled(),
+                        DatePicker::make('date_from')->columnSpan(1)->reactive()->format('Y-m-d')->required()->disabled(),
+                        DatePicker::make('date_to')->columnSpan(1)->format('Y-m-d')->reactive()->required()->afterOrEqual('date_from')->disabled(),
                     ])->columnSpan(4)
                    ])
                     
