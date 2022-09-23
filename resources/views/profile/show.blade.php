@@ -15,6 +15,7 @@
 
             <div class="mt-10 sm:mt-0">
                 @livewire('user-profile.bond')
+                 <x-jet-section-border />
             </div>
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))

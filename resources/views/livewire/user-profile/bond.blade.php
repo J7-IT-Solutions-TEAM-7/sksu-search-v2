@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Set your bonds.') }}
+        {{ __('View your bonds.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -54,17 +54,24 @@
 
         <!-- Bond Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="bond_name" value="{{ __('Bond Name') }}" />
+            {{-- <x-jet-label for="bond_name" value="{{ __('Bond Name') }}" />
             <x-jet-input id="bond_name" type="text" class="mt-1 block w-full" wire:model.defer="bond_name" autocomplete="full_name" />
-            <x-jet-input-error for="bond_name" class="mt-2" />
+            <x-jet-input-error for="bond_name" class="mt-2" /> --}}
+            @if ($user != null)
+                 <span>{{$user->bond_name}}</span>
+                 <span>{{$user->validity_date}}</span>
+            @else
+                <span>No bond</span>
+            @endif
+           
         </div>
 
          <!-- Validity Date -->
-        <div class="col-span-6 sm:col-span-4">
+        {{-- <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="val_date" value="{{ __('Validity Date') }}" />
             <x-jet-input id="val_date" type="date" class="mt-1 block w-full" wire:model.defer="val_date" autocomplete="birthday" />
             <x-jet-input-error for="val_date" class="mt-2" />
-        </div>
+        </div> --}}
 
          <!-- Contact Number -->
         {{-- <div class="col-span-6 sm:col-span-4">
@@ -97,7 +104,7 @@
         </div>
     </x-slot>
 
-    <x-slot name="actions">
+    {{-- <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
             {{ __('Saved.') }}
         </x-jet-action-message>
@@ -105,5 +112,5 @@
         <x-jet-button wire:loading.attr="disabled" wire:target="photo" class="bg-primary-500">
             {{ __('Save') }}
         </x-jet-button>
-    </x-slot>
+    </x-slot> --}}
 </x-jet-form-section>

@@ -18,12 +18,12 @@ class Bond extends Component
     public function render()
     {
         $this->user_id = auth()->user()->id;
-        $this->user = Employee_information::where('user_id', $this->user_id)->first();
-        if($this->user->bond_id != null)
-        {
-            $this->bond_name = $this->user->bond->bond_name;
-            $this->val_date = $this->user->bond->validity_date;
-        }
+        $this->user = BondModal::where('employee_id', $this->user_id)->first();
+        // if($this->user->bond_id != null)
+        // {
+        //     $this->bond_name = $this->user->bond->bond_name;
+        //     $this->val_date = $this->user->bond->validity_date;
+        // }
         
         return view('livewire.user-profile.bond');
     }
@@ -45,7 +45,7 @@ class Bond extends Component
             $this->bond->bond_name = $this->bond_name;
             $this->bond->validity_date = $this->val_date;
             $this->bond->employee_id = $this->user_id;
-            $this->bond->save();
+            $this->bond->save(); 
 
             $update_user = Employee_information::find($this->user_id)->update([
                 'bond_id'=>$this->bond->id,

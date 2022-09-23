@@ -24,7 +24,7 @@ class EmployeeSeeder extends Seeder
          ]);
 
         DB::table('employee_informations')->insert([
-            'full_name' => 'CHRISTINE P. ABO, PhD',
+            'full_name' => 'CHRISTINE P. ABO',
             'first_name' => 'CHRISTINE',
             'last_name' => 'ABO',
             'user_id' => 1,
@@ -39,7 +39,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'JULIE E. ALBANO, PhD',
+            'full_name' => 'JULIE E. ALBANO',
             'first_name' => 'JULIE',
             'last_name' => 'ALBANO',
             'user_id' => 2,
@@ -84,7 +84,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'RODELYN M. DALAYAP, PhD',
+            'full_name' => 'RODELYN M. DALAYAP',
             'first_name' => 'RODELYN',
             'last_name' => 'DALAYAP',
             'user_id' => 5,
@@ -99,7 +99,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'SIONY S. BRUNIO, PhD',
+            'full_name' => 'SIONY S. BRUNIO',
             'first_name' => 'SIONY',
             'last_name' => 'BRUNIO',
             'user_id' => 6,
@@ -114,7 +114,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ROSITA T. RIZALDO, PhD',
+            'full_name' => 'ROSITA T. RIZALDO',
             'first_name' => 'ROSITA',
             'last_name' => 'RIZALDO',
             'user_id' => 7,
@@ -129,7 +129,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'DENNIS M. MERIALES, PhD',
+            'full_name' => 'DENNIS M. MERIALES',
             'first_name' => 'DENNIS',
             'last_name' => 'MERIALES',
             'user_id' => 8,
@@ -144,7 +144,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'NORAISA K. YASIN, PhD',
+            'full_name' => 'NORAISA K. YASIN',
             'first_name' => 'NORAISA',
             'last_name' => 'YASIN',
             'user_id' => 9,
@@ -159,7 +159,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'LANI B. ALCON, MPA',
+            'full_name' => 'LANI B. ALCON',
             'first_name' => 'LANI',
             'last_name' => 'ALCON',
             'user_id' => 10,
@@ -174,7 +174,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'REBECCA D. SUBILLAGA, EdD-ELT',
+            'full_name' => 'REBECCA D. SUBILLAGA',
             'first_name' => 'REBECCA',
             'last_name' => 'SUBILLAGA',
             'user_id' => 11,
@@ -189,7 +189,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'SUSIE D. DAZA, MS',
+            'full_name' => 'SUSIE D. DAZA',
             'first_name' => 'SUSIE',
             'last_name' => 'DAZA',
             'user_id' => 12,
@@ -219,7 +219,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'BENEDICT A. RABUT, DIT',
+            'full_name' => 'BENEDICT A. RABUT',
             'first_name' => 'BENEDICT',
             'last_name' => 'RABUT',
             'user_id' => 14,
@@ -234,7 +234,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'KRISTINE MAE H. AMPAS, MIT',
+            'full_name' => 'KRISTINE MAE H. AMPAS',
             'first_name' => 'KRISTINE MAE',
             'last_name' => 'AMPAS',
             'user_id' => 15,
@@ -249,7 +249,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ALNE D. QUINOVEBA, PhD',
+            'full_name' => 'ALNE D. QUINOVEBA',
             'first_name' => 'ALNE',
             'last_name' => 'QUINOVEBA',
             'user_id' => 16,
@@ -264,7 +264,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'Lilibeth B. EDAÑO, EdD',
+            'full_name' => 'Lilibeth B. EDAÑO',
             'first_name' => 'Lilibeth',
             'last_name' => 'EDAÑO',
             'user_id' => 17,
@@ -279,7 +279,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'VIVENCIO L. CALIXTRO, JR., EdD',
+            'full_name' => 'VIVENCIO L. CALIXTRO JR.',
             'first_name' => 'VIVENCIO',
             'last_name' => 'CALIXTRO',
             'user_id' => 18,
@@ -294,7 +294,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'JESHER Y. PALOMARIA, CPA',
+            'full_name' => 'JESHER Y. PALOMARIA',
             'first_name' => 'JESHER',
             'last_name' => 'PALOMARIA',
             'user_id' => 19,
@@ -310,7 +310,7 @@ class EmployeeSeeder extends Seeder
    
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'REY S. FUENTEBILLA, MAT',
+            'full_name' => 'REY S. FUENTEBILLA',
             'first_name' => 'REY',
             'last_name' => 'FUENTEBILLA',
             'user_id' => 20,
@@ -325,7 +325,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ANNERILL R. LORIO, MS',
+            'full_name' => 'ANNERILL R. LORIO',
             'first_name' => 'ANNERILL',
             'last_name' => 'LORIO',
             'user_id' => 21,
@@ -340,7 +340,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MARY JEAN S. FALSARIO, EdD',
+            'full_name' => 'MARY JEAN S. FALSARIO',
             'first_name' => 'MARY JEAN',
             'last_name' => 'FALSARIO',
             'user_id' => 22,
@@ -355,7 +355,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'AMIRA MAE C. GUMANOY, PhD',
+            'full_name' => 'AMIRA MAE C. GUMANOY',
             'first_name' => 'AMIRA MAE ',
             'last_name' => 'GUMANOY',
             'user_id' => 23,
@@ -370,7 +370,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'HASSANAL P. ABUSAMA, MS',
+            'full_name' => 'HASSANAL P. ABUSAMA',
             'first_name' => 'HASSANAL',
             'last_name' => 'ABUSAMA',
             'user_id' => 24,
@@ -385,7 +385,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'GRACE R. PEDROLA, RN',
+            'full_name' => 'GRACE R. PEDROLA',
             'first_name' => 'GRACE',
             'last_name' => 'PEDROLA',
             'user_id' => 25,
@@ -415,7 +415,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'CYRIL JOHN A. DOMINGO, MSc',
+            'full_name' => 'CYRIL JOHN A. DOMINGO',
             'first_name' => 'CYRIL JOHN',
             'last_name' => 'DOMINGO',
             'user_id' => 27,
@@ -430,7 +430,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MITOS D. DELCO, PhD',
+            'full_name' => 'MITOS D. DELCO',
             'first_name' => 'MITOS',
             'last_name' => 'DELCO',
             'user_id' => 28,
@@ -490,7 +490,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MARISSA C. HITALIA, PhD',
+            'full_name' => 'MARISSA C. HITALIA',
             'first_name' => 'MARISSA',
             'last_name' => 'HITALIA',
             'user_id' => 32,
@@ -505,7 +505,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ATTY. LENNIE ANN C. CERDANA, LLM',
+            'full_name' => 'ATTY. LENNIE ANN C. CERDANA',
             'first_name' => 'LENNIE ANN',
             'last_name' => 'CERDANA',
             'user_id' => 33,
@@ -520,7 +520,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'NANCY D. ESPACIO, EdD',
+            'full_name' => 'NANCY D. ESPACIO',
             'first_name' => 'NANCY',
             'last_name' => 'ESPACIO',
             'user_id' => 34,
@@ -535,7 +535,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'CARMELA CAMILA B. URBANO, RN, MAN',
+            'full_name' => 'CARMELA CAMILA B. URBANO',
             'first_name' => 'CARMELA CAMILA',
             'last_name' => 'URBANO',
             'user_id' => 35,
@@ -550,7 +550,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'EDWIN CORTEJO, MS',
+            'full_name' => 'EDWIN CORTEJO',
             'first_name' => 'EDWIN',
             'last_name' => 'CORTEJO',
             'user_id' => 36,
@@ -565,7 +565,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MA. JEANELLE B. ARGONZA, PhD',
+            'full_name' => 'MA. JEANELLE B. ARGONZA',
             'first_name' => 'MA. JEANELLE',
             'last_name' => 'ARGONZA',
             'user_id' => 37,
@@ -580,7 +580,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'JEANNIE A. ROMANO, PhD',
+            'full_name' => 'JEANNIE A. ROMANO',
             'first_name' => 'JEANNIE',
             'last_name' => 'ROMANO',
             'user_id' => 38,
@@ -595,7 +595,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'CECILIA E. GENER, MIT',
+            'full_name' => 'CECILIA E. GENER',
             'first_name' => 'CECILIA',
             'last_name' => 'GENER',
             'user_id' => 39,
@@ -610,7 +610,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'RANDE T. BERINA, MAT',
+            'full_name' => 'RANDE T. BERINA',
             'first_name' => 'RANDE',
             'last_name' => 'BERINA',
             'user_id' => 40,
@@ -625,7 +625,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MEILAFLOR A. PACLIBAR, MEP-CoE',
+            'full_name' => 'MEILAFLOR A. PACLIBAR',
             'first_name' => 'MEILAFLOR',
             'last_name' => 'PACLIBAR',
             'user_id' => 41,
@@ -640,7 +640,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'EULOGIO L. APELLIDO, JR., MIT',
+            'full_name' => 'EULOGIO L. APELLIDO JR.',
             'first_name' => 'EULOGIO',
             'last_name' => 'APELLIDO',
             'user_id' => 42,
@@ -655,7 +655,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ADONIS S. BESA, PhD',
+            'full_name' => 'ADONIS S. BESA',
             'first_name' => 'ADONIS',
             'last_name' => 'BESA',
             'user_id' => 43,
@@ -701,7 +701,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'LOVINA P. COGOLLO, PhD',
+            'full_name' => 'LOVINA P. COGOLLO',
             'first_name' => 'LOVINA',
             'last_name' => 'COGOLLO',
             'user_id' => 46,
@@ -761,7 +761,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'REYNALDO H. DALAYAP JR., PhD',
+            'full_name' => 'REYNALDO H. DALAYAP JR.',
             'first_name' => 'REYNALDO',
             'last_name' => 'DALAYAP',
             'user_id' => 50,
@@ -1387,7 +1387,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ELBREN O. ANTONIO, DIT',
+            'full_name' => 'ELBREN O. ANTONIO',
             'first_name' => 'ELBREN',
             'last_name' => 'ANTONIO',
             'user_id' => 91,
@@ -2561,7 +2561,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'RANDE B. DECHAVEZ, PhD',
+            'full_name' => 'RANDE B. DECHAVEZ',
             'first_name' => 'RANDE',
             'last_name' => 'DECHAVEZ',
             'user_id' => 169,
@@ -2650,7 +2650,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'ELVIE V. DIAZ, PhD',
+            'full_name' => 'ELVIE V. DIAZ',
             'first_name' => 'ELVIE',
             'last_name' => 'DIAZ',
             'user_id' => 175,
@@ -3997,12 +3997,12 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'MARY LYNN G. MAGBANUA, PhD',
+            'full_name' => 'MARY LYNN G. MAGBANUA',
             'first_name' => 'MARY LYNN',
             'last_name' => 'MAGBANUA',
             'user_id' => 264,
             'role_id' => 2,
-            'position_id' => 12,  
+            'position_id' => 12,
          ]);
 
          DB::table('users')->insert([
@@ -4176,7 +4176,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'JUNITO P. MARCELINO, PhD',
+            'full_name' => 'JUNITO P. MARCELINO',
             'first_name' => 'JUNITO',
             'last_name' => 'MARCELINO',
             'user_id' => 276,
@@ -5585,7 +5585,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'JOE H. SELAYRO, MIT',
+            'full_name' => 'JOE H. SELAYRO',
             'first_name' => 'JOE',
             'last_name' => 'SELAYRO',
             'user_id' => 370,
@@ -5991,7 +5991,7 @@ class EmployeeSeeder extends Seeder
          ]);
    
          DB::table('employee_informations')->insert([
-            'full_name' => 'HUBAIDA A. MAMALINTA, PhD',
+            'full_name' => 'HUBAIDA A. MAMALINTA',
             'first_name' => 'HUBAIDA',
             'last_name' => 'MAMALINTA',
             'user_id' => 397,
@@ -6025,7 +6025,7 @@ class EmployeeSeeder extends Seeder
             DB::table('employee_informations')->insert([
                   'full_name'=> 'Gerald B Rebamonte',
                   'first_name' => 'Gerald',
-                  'last_name' => 'Rebamonte',       
+                  'last_name' => 'Rebamonte',
                   'user_id' => 399,
                   'role_id'=>7,
                   'office_id'=>3,
@@ -6042,7 +6042,7 @@ class EmployeeSeeder extends Seeder
     DB::table('employee_informations')->insert([
         'full_name'=> 'Joan M. Nieveras',
         'first_name' => 'Joan',
-        'last_name' => 'Nieveras',       
+        'last_name' => 'Nieveras',  
         'user_id' => 400,
         'role_id'=>8,
         'office_id'=>48,
